@@ -6,6 +6,7 @@ from time import strftime
 from datetime import datetime
 import mysql.connector
 from tkinter import messagebox
+import config
 
 class RoomBookingDetails:
     def __init__(self,root):
@@ -149,7 +150,7 @@ class RoomBookingDetails:
         if self.var_floor.get()=="":
             messagebox.showerror("Error","Please Enter Floor Number",parent=self.root)
         else:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             my_cursor.execute("Update details set Floor=%s,RoomType=%s where RoomNo=%s",(
                                                                                                                                                                          
@@ -167,7 +168,7 @@ class RoomBookingDetails:
     def mDelete(self):
         mDelete=messagebox.askyesno("Inkeeper's Suite","Do you want to delete this Room Details",parent=self.root)
         if mDelete>0:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             query="delete from details where RoomNo=%s"
             value=(self.var_RoomNo.get(),)
