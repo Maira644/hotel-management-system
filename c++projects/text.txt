@@ -1,0 +1,3 @@
+Data structures help organize data effeciently.
+Typing speed tests help improve typing skills.
+Learning cpp can be fun and rewarding.
