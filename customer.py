@@ -211,7 +211,7 @@ class Cust_Win:
             messagebox.showerror("Error","All fields are required",parent=self.root)
         else:
             try:
-                conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+                conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
                 my_cursor=conn.cursor()
                 my_cursor.execute("INSERT INTO customer VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                                                                                self.var_ref.get(),
