@@ -4,7 +4,7 @@ from tkinter import ttk
 import random
 import mysql.connector
 from tkinter import messagebox
-
+import config
 
 
 class Cust_Win:
@@ -234,7 +234,7 @@ class Cust_Win:
                 messagebox.showwarning("warning",f"Something Went Wrong:{str(es)}",parent=self.root)
 
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from customer")
         rows=my_cursor.fetchall()
@@ -266,7 +266,7 @@ class Cust_Win:
         if self.var_mobile.get()=="":
             messagebox.showerror("Error","Please Enter Mobile Number",parent=self.root)
         else:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             my_cursor.execute("Update customer set Name=%s,Father=%s,Gender=%s,PostCode=%s,Mobile=%s,Email=%s,Nationality=%s,IdProof=%s,IdNumber=%s,Address=%s where Ref=%s",(
                                                                                                                                                                          
@@ -291,7 +291,7 @@ class Cust_Win:
     def mDelete(self):
         mDelete=messagebox.askyesno("Inkeeper's Suite","Do you want delete this customer",parent=self.root)
         if mDelete>0:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             query="delete from customer where Ref=%s"
             value=(self.var_ref.get(),)
@@ -320,7 +320,7 @@ class Cust_Win:
         self.var_ref.set(str(x))
 
     def search(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
 
         my_cursor.execute(
