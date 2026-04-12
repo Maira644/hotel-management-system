@@ -1,7 +1,0 @@
-a | Deposit | 100 | 100
-a | Withdraw | 20 | 80
-a | Transfer to b | 50 | 30
-b | Transfer from a | 50 | 50
-b | Deposit | 1000 | 1050
-b | Transfer to a | 50 | 1000
-a | Transfer from b | 50 | 80
