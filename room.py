@@ -6,6 +6,7 @@ from time import strftime
 from datetime import datetime
 import mysql.connector
 from tkinter import messagebox
+import config
 
 class RoomBooking:
     def __init__(self,root):
@@ -73,7 +74,7 @@ class RoomBooking:
         label_RoomType=Label(labelframeleft,text="Room Type:",font=("arial",12,"bold"),padx=2,pady=6)
         label_RoomType.grid(row=3,column=0,sticky=W)
 
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
         my_cursor.execute("select RoomType from details")
         ide=my_cursor.fetchall()
@@ -86,7 +87,7 @@ class RoomBooking:
         lblRoomAvaialble=Label(labelframeleft,text="Availabe Room:",font=("arial",12,"bold"),padx=2,pady=6)
         lblRoomAvaialble.grid(row=4,column=0,sticky=W)
 
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
         my_cursor.execute("select RoomNo from details")
         rows=my_cursor.fetchall()
@@ -246,7 +247,7 @@ class RoomBooking:
                 messagebox.showwarning("warning",f"Something Went Wrong:{str(es)}",parent=self.root)
     #fetch data 
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from room")
         rows=my_cursor.fetchall()
@@ -276,7 +277,7 @@ class RoomBooking:
         if self.var_contact.get()=="":
             messagebox.showerror("Error","Please Enter Mobile Number",parent=self.root)
         else:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             my_cursor.execute("Update room set Check_in=%s,Check_out=%s,roomtype=%s,roomavailable=%s,meal=%s,noOfdays=%s where Contact=%s",(
                                                                                                                                                                          
@@ -297,7 +298,7 @@ class RoomBooking:
     def mDelete(self):
         mDelete=messagebox.askyesno("Inkeeper's Suite","Do you want to delete this customer",parent=self.root)
         if mDelete>0:
-            conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+            conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
             my_cursor=conn.cursor()
             query="delete from room where Contact=%s"
             value=(self.var_contact.get(),)
@@ -331,7 +332,7 @@ class RoomBooking:
              conn = mysql.connector.connect(
             host="localhost",
             username="root",
-            password="1234567890##",
+            password=config.DB_PASSWORD,
             database="suite"
         )
         my_cursor = conn.cursor()
@@ -406,7 +407,7 @@ class RoomBooking:
 
     #search system
     def search(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
 
         my_cursor.execute(
