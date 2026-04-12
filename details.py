@@ -122,7 +122,7 @@ class RoomBookingDetails:
 
     #fetch data 
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="1234567890##",database="suite")
+        conn=mysql.connector.connect(host="localhost",username="root",password=config.DB_PASSWORD,database="suite")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from details")
         rows=my_cursor.fetchall()
