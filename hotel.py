@@ -4,8 +4,9 @@ from customer import Cust_Win
 from room import RoomBooking
 from details import RoomBookingDetails
 
-# Defined constant to resolve the "duplicating literal" code smell
+# Constants defined to resolve "duplicating literal" code smells
 FONT_STYLE = "times new roman"
+COLOR_FG = "light gray"
 
 class HotelManagementSystem:
     def __init__(self, root):
@@ -30,8 +31,9 @@ class HotelManagementSystem:
         lblimg2.place(x=0, y=0, width=230, height=140)
 
         # ====================title======================
+        # Uses FONT_STYLE and COLOR_FG constants
         lbl_title = tk.Label(self.root, text="EXPERIENCE THE EXTRAORDINARY", 
-                             font=(FONT_STYLE, 40, "bold"), bg="black", fg="light gray")
+                             font=(FONT_STYLE, 40, "bold"), bg="black", fg=COLOR_FG)
         lbl_title.place(x=0, y=140, width=1550, height=50)
 
         # ===================main frame===================
@@ -40,7 +42,7 @@ class HotelManagementSystem:
 
         # ====================menu========================
         lbl_menu = tk.Label(main_frame, text="MENU", font=(FONT_STYLE, 20, "bold"), 
-                            bg="black", fg="light gray", bd=4, relief=tk.RIDGE)
+                            bg="black", fg=COLOR_FG, bd=4, relief=tk.RIDGE)
         lbl_menu.place(x=0, y=0, width=230)
 
         # ====================btn frame===================
@@ -49,18 +51,18 @@ class HotelManagementSystem:
 
         cust_btn = tk.Button(btn_frame, text="CUSTOMER", command=self.cust_details, 
                              width=22, font=(FONT_STYLE, 14, "bold"), bg="black", 
-                             fg="light gray", bd=0, cursor="hand2")
+                             fg=COLOR_FG, bd=0, cursor="hand2")
         cust_btn.grid(row=0, column=0, pady=10)
 
         room_btn = tk.Button(btn_frame, text="ROOM", command=self.roombooking, 
                              width=22, font=(FONT_STYLE, 14, "bold"), bg="black", 
-                             fg="light gray", bd=0, cursor="hand2")
+                             fg=COLOR_FG, bd=0, cursor="hand2")
         room_btn.grid(row=1, column=0, pady=10)
 
         details_btn = tk.Button(btn_frame, text="DETAILS", width=22, 
                                 command=self.roombookingdetails, 
                                 font=(FONT_STYLE, 14, "bold"), bg="black", 
-                                fg="light gray", bd=0, cursor="hand2")
+                                fg=COLOR_FG, bd=0, cursor="hand2")
         details_btn.grid(row=2, column=0, pady=10)
 
         # =================right image=====================
@@ -104,10 +106,10 @@ def open_hotel():
     root.mainloop()
 
 if __name__ == "__main__":
-    # This prevents direct access without going through login.py
+    # Security check to ensure entry via login.py
     print("Access Denied! Please run login.py first.")
 
 
 if __name__ == "__main__":
-    # This prevents direct access without going through login.py
+    # Security check to ensure entry via login.py
     print("Access Denied! Please run login.py first.")
