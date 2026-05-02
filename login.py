@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Frame, Entry, Button, RIDGE, SOLID # Fix: Import only needed names
+from tkinter import Tk, Label, Frame, Entry, Button, RIDGE, SOLID 
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from hotel import open_hotel
