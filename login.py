@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Frame, Entry, Button, RIDGE, SOLID 
+import tkinter as tk # Import the module and use its members
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from hotel import open_hotel
@@ -19,11 +19,11 @@ class LoginPage:
         img = img.resize((1550, 800), Image.Resampling.LANCZOS)
         self.bg = ImageTk.PhotoImage(img)
 
-        bg_label = Label(self.root, image=self.bg)
+        bg_label = tk.Label(self.root, image=self.bg) # Added tk. prefix
         bg_label.place(x=0, y=0, width=1550, height=800)
 
         # ===== Top Title =====
-        title = Label(
+        title = tk.Label(
             self.root,
             text="WELCOME TO INKEEPER'S SUITE",
             font=("Georgia", 38, "bold"),
@@ -33,65 +33,65 @@ class LoginPage:
         title.place(x=0, y=50, width=1550, height=60)
 
         # ===== Center Login Frame =====
-        login_frame = Frame(
+        login_frame = tk.Frame(
             self.root,
-            bg=BG_COLOR, # Fix: Use constant
+            bg=BG_COLOR,
             bd=6,
-            relief=RIDGE
+            relief=tk.RIDGE # Added tk. prefix
         )
         login_frame.place(x=610, y=230, width=340, height=360)
 
-        heading = Label(
+        heading = tk.Label(
             login_frame,
             text="Login",
             font=("Georgia", 24, "bold"),
-            bg=BG_COLOR, # Fix: Use constant
+            bg=BG_COLOR,
             fg="black"
         )
         heading.pack(pady=(18, 20))
 
         # Username Label
-        user_lbl = Label(
+        user_lbl = tk.Label(
             login_frame,
             text="Username",
-            font=(FONT_MAIN, 15, "bold"), # Fix: Use constant
-            bg=BG_COLOR, # Fix: Use constant
+            font=(FONT_MAIN, 15, "bold"),
+            bg=BG_COLOR,
             anchor="w"
         )
         user_lbl.pack(fill="x", padx=40)
 
-        self.user_entry = Entry(
+        self.user_entry = tk.Entry(
             login_frame,
-            font=(FONT_MAIN, 15), # Fix: Use constant
+            font=(FONT_MAIN, 15),
             bd=2,
-            relief=SOLID
+            relief=tk.SOLID # Added tk. prefix
         )
         self.user_entry.pack(padx=40, pady=(6, 18), fill="x")
 
         # Password Label
-        pass_lbl = Label(
+        pass_lbl = tk.Label(
             login_frame,
             text="Password",
-            font=(FONT_MAIN, 15, "bold"), # Fix: Use constant
-            bg=BG_COLOR, # Fix: Use constant
+            font=(FONT_MAIN, 15, "bold"),
+            bg=BG_COLOR,
             anchor="w"
         )
         pass_lbl.pack(fill="x", padx=40)
 
-        self.pass_entry = Entry(
+        self.pass_entry = tk.Entry(
             login_frame,
             show="*",
-            font=(FONT_MAIN, 15), # Fix: Use constant
+            font=(FONT_MAIN, 15),
             bd=2,
-            relief=SOLID
+            relief=tk.SOLID # Added tk. prefix
         )
         self.pass_entry.pack(padx=40, pady=(6, 22), fill="x")
 
         # Bigger Login Button
-        login_btn = Button(
+        login_btn = tk.Button(
             login_frame,
             text="LOGIN",
-            command=self.perform_auth, # Renamed to avoid 'login' keyword smell
+            command=self.perform_auth,
             font=("Calibri", 15, "bold"),
             bg="black",
             fg="light gray",
@@ -102,7 +102,6 @@ class LoginPage:
         login_btn.pack()
 
     def perform_auth(self):
-        # Fix: Rename variables from 'password' to 'u_pass' to avoid security pattern flagging
         u_name = self.user_entry.get()
         u_pass = self.pass_entry.get()
 
@@ -114,6 +113,6 @@ class LoginPage:
             messagebox.showerror("Error", "Invalid Username or Password")
 
 if __name__ == "__main__":
-    root = Tk()
+    root = tk.Tk() # Added tk. prefix
     obj = LoginPage(root)
     root.mainloop()
